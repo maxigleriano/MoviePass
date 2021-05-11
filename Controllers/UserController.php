@@ -24,7 +24,7 @@
             {
                 $_SESSION["logged_user"] = $user;
 
-                if($user->getRole() == 1)
+                if($_SESSION["logged_user"]->getRole() == 1)
                 {   
                     $this->viewAdmin();
                 }
@@ -57,6 +57,7 @@
         }
 
         public function viewAdmin() {
+            $movieList = $this->movieAPI->getAll();
             require_once(ADMIN_VIEWS ."viewAdmin.php");
         }
  
@@ -73,16 +74,18 @@
                     $user = new User($name, $lastName, $email, $password, $birthDate);
                     
                     if($this->userDAO->getByEmail($email)) {
-                        echo '<script language="javascript">alert("El email ya esta en uso");</script>';   
+                        echo '<script language="javascript">alert("El email ya está en uso");</script>';   
                         $this->signUp();  
                     }
                     else {
                         $this->userDAO->add($user);
+                        echo '<script language="javascript">alert("Usuario registrado");</script>';  
+                        $movieList = $this->movieAPI->getAll();
                         require_once(VIEWS_PATH . "index.php");
                     }
                 }
                 else {
-                    echo '<script language="javascript">alert("El email es incorrecto.");</script>';   
+                    echo '<script language="javascript">alert("Ingrese un formato de mail válido.");</script>';   
                     $this->signUp();
                 }
             }
@@ -90,8 +93,6 @@
                 echo '<script language="javascript">alert("No puede haber campos en blanco");</script>'; 
                 $this->signUp();  
             }
-            
-            require_once(VIEWS_PATH . "index.php");
         }
 
         public function userSettings() {

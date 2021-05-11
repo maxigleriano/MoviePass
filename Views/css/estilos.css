@@ -14,9 +14,29 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+
+
 .contenedor {
     width: 90%;
     margin: auto;
+}
+
+.contenedor .box {
+    margin-top: 120px;
+}
+
+.contenedor .box h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.contenedor .box a,
+.contenedor .box a:visited {
+    color: var(--rojo);
+}
+
+.contenedor .box a:hover {
+    color: white;
 }
 
 .mini-contenedor {
@@ -26,6 +46,48 @@ body {
     transform: translate(-50%, -50%);
     background: white;
     border-radius: 10px;
+}
+
+header {
+    padding: 30px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--fondo);
+}
+
+header .contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logotipo {
+    font-family: 'Bebas Neue', cursive;
+    font-weight: normal;
+    color: var(--rojo);
+    font-size: 40px;
+}
+
+header nav a {
+    color: #AAA;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+header nav a:hover,
+header nav a.activo {
+    color: #FFF;
+}
+
+.box p {
+    color: white;
+    width: 50%;
+}
+
+.box .foto {
+    float: left;
+    margin-right: 30px;
 }
 
 /* ---- ---- ---- Login - Signup ---- ---- ---- */
@@ -68,6 +130,7 @@ form .txt-field {
     pointer-events: none;
     transition: .5s;
 }
+
 .txt-field span::before {
     content: '';
     position: absolute;
@@ -101,6 +164,7 @@ form .txt-field {
 }
 
 input[type="submit"] {
+    margin-bottom: 20px;
     width: 100%;
     height: 50px;
     border: 10px solid;
@@ -119,7 +183,7 @@ input[type="submit"]:hover {
 }
 
 .signup-link {
-    margin: 30px 0;
+    margin: 0 0 30px 0;
     text-align: center;
     font-size: 16px;
     color: #666666;
@@ -134,36 +198,27 @@ input[type="submit"]:hover {
     text-decoration: underline;
 }
 
-header {
-    padding: 30px 0;
-    position: fixed;
-    top: 0;
+form .option-field {
+    position: relative;
+    border-bottom: 2px solid var(--rojo);
+    margin: 30px 0;
+}
+
+.option-field label {
+    position: relative;
+    left: 5px;
+    color: #adadad;
+    font-size: 16px;
+}
+
+.option-field .option {
     width: 100%;
-    background-color: var(--fondo);
-}
-
-header .contenedor {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header .logotipo {
-    font-family: 'Bebas Neue', cursive;
-    font-weight: normal;
-    color: var(--rojo);
-    font-size: 40px;
-}
-
-header nav a {
-    color: #AAA;
-    text-decoration: none;
-    margin-right: 20px;
-}
-
-header nav a:hover,
-header nav a.activo {
-    color: #FFF;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
 }
 
 /* ---- ---- ---- Pelicula Principal ---- ---- ---- */

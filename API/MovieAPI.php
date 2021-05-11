@@ -172,8 +172,8 @@
                 if($id == $jsonToDecode["id"]) {
                     $movie = new Movie();
                     
-                    $movie->setPosterPath("http://image.tmdb.org/t/p/original" . $valueArray["poster_path"]);
-                    $movie->setBackdropPath("http://image.tmdb.org/t/p/original" . $valueArray["backdrop_path"]);
+                    $movie->setPosterPath("http://image.tmdb.org/t/p/original" . $jsonToDecode["poster_path"]);
+                    $movie->setBackdropPath("http://image.tmdb.org/t/p/original" . $jsonToDecode["backdrop_path"]);
                     $movie->setId($jsonToDecode["id"]);
                     $movie->setAdult($jsonToDecode["adult"]);
                     $movie->setTitle($jsonToDecode["title"]);
@@ -205,6 +205,28 @@
                 array_push($movies, $this->getById($id));
             }
             return $movies;
+        }
+
+        public function getTrailer($id) {
+            $jsonContent = file_get_contents("https://api.themoviedb.org/3/movie/$id/videos?api_key=" . API_KEY . "&language=es-ES");
+            
+            $jsonToDecode = json_decode($jsonContent, true);
+
+                if($id == $jsonToDecode["id"]) 
+                {
+                    $results = $jsonToDecode["results"];
+
+                    foreach($results as $result) 
+                    {
+                        //$trailer = "https://www.youtube.com/watch?v=" . $result["key"];
+                        $trailer = '<iframe width="560" height="315" src="https://www.youtube.com/embed/' . $result["key"] . '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                        return $trailer;
+                    }
+                }
+
+                else {
+                    return null;
+                }
         }
         
 

@@ -6,7 +6,7 @@
         <link rel="stylesheet"  type="text/css" href="<?php echo CSS_PATH ?>estilos.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-        <title>Iniciar Sesión</title>
+        <title>MoviePass</title>
     </head>
     
     <body>
@@ -17,32 +17,39 @@
                     <a href="<?php echo FRONT_ROOT ?>Home/Index">Inicio</a>
                     <a href="<?php echo FRONT_ROOT ?>Home/cartelera">Cartelera</a>
                     <a href="#">Mas Recientes</a>
-                    <a href="<?php echo FRONT_ROOT ?>Home/login" class="activo">Iniciar Sesión</a>
+                    <a href="<?php echo FRONT_ROOT ?>Home/administrar" class="activo">Administración</a>
+                    <a href="<?php echo FRONT_ROOT ?>User/logout">Salir</a>
                 </nav>
             </div>
         </header>
 
         <main>
             <div class="mini-contenedor">
-                <h2>Iniciar Sesión</h2>
+                <h2>Agregar Cine</h2>
 
-                <form action="<?php echo FRONT_ROOT ?>User/login" method="post">
-                
+                <form action="<?php echo FRONT_ROOT ?>Theater/addNew" method="post">
+
                     <div class="txt-field">
-                        <input type="email" name="email" value="" required>
+                        <input type="text" name="name" value="" required autocomplete="off">
                         <span></span>
-                        <label for="">Email</label>
+                        <label for="">Nombre</label>
                     </div>
                     <div class="txt-field">
-                        <input type="password" name="password" value="" required>
+                        <input type="text" name="addres" value="" required autocomplete="off">
                         <span></span>
-                        <label for="">Contraseña</label>
+                        <label for="">Dirección</label>
                     </div>
-                    <div class="pass">Olvidé mi contraseña</div>
-                    <input type="submit" value="Entrar">
-                    <div class="signup-link">
-                        Not a member? <a href="<?php echo FRONT_ROOT ?>User/signup">Registrarse</a>
+                    <div class="option-field">
+                        <label for="">Horario de Apertura</label>
+                        <input class="option" type="time" name="openingTime" value="" required autocomplete="off">
+                        <span></span>
                     </div>
+                    <div class="option-field">
+                        <label for="">Horario de Cierre</label>
+                        <input class="option" type="time" name="closingTime" value="" required autocomplete="off">
+                        <span></span>
+                    </div>
+                    <input type="submit" value="Agregar">
 
                 </form>
                 

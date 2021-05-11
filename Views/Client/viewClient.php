@@ -14,8 +14,8 @@
             <div class="contenedor">
                 <h2 class="logotipo">MoviePass</h2>
                 <nav>
-                    <a href="<?php echo FRONT_ROOT ?>User/viewClient" class="activo">Inicio</a>
-                    <a href="<?php echo FRONT_ROOT ?>Home/carteleraCliente">Cartelera</a>
+                    <a href="<?php echo FRONT_ROOT ?>Home/Index" class="activo">Inicio</a>
+                    <a href="<?php echo FRONT_ROOT ?>Home/cartelera">Cartelera</a>
                     <a href="#">Mas Recientes</a>
                     <a href="<?php echo FRONT_ROOT ?>User/logout">Salir</a>
                 </nav>
@@ -23,14 +23,12 @@
         </header>
 
         <main>
-        <main>
             <div class="pelicula-principal">
                 <div class="contenedor">
                     <h3 class="titulo">Interestelar</h3>
                     <p class="descripcion">
                         Narra las aventuras de un grupo de exploradores que hacen uso de un agujero de gusano recientemente descubierto para superar las limitaciones de los viajes espaciales tripulados y vencer las inmensas distancias que tiene un viaje interestelar.
                     </p>
-                    <button role="button" class="boton"><i class="fas fa-play"></i>Reproducir</button>
                     <button role="button" class="boton"><i class="fas fa-info-circle"></i>Más Información</button>
                 </div>
             </div>
@@ -50,7 +48,7 @@
                         <?php foreach($movieList as $movie) { ?>
 
                             <div class="pelicula">
-                                <a href="#"><img src="<?php echo $movie->getBackdropPath()?>" alt="<?php echo $movie->getTitle() ?>"></a>
+                                <a href="<?php echo FRONT_ROOT ?>Movie/getMovie/<?php echo $movie->getId()?>"><img src="<?php echo $movie->getBackdropPath()?>" alt="<?php echo $movie->getTitle() ?>"></a>
                             </div>
 
                         <?php } ?>

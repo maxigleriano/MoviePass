@@ -48,10 +48,10 @@
                             <span></span>
                             <label for="">Contraseña</label>
                         </div>
-                        <div class="txt-field">
-                            <input type="date" name="birthdate" value="" required>
-                            <span></span>
+                        <div class="option-field">
                             <label for="">Fecha de Nacimiento</label>
+                            <input class="option" type="date" name="birthDate" value="" required autocomplete="off">
+                            <span></span>
                         </div>
                         <input type="submit" value="Aceptar">
 

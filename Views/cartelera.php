@@ -30,13 +30,13 @@
                     <?php foreach($movieList as $movie) { ?>
                         
                         <div class="movie">
-                            <a href="#"><img src="<?php echo $movie->getPosterPath()?>" width="210px" height="290px" alt="<?php echo $movie->getTitle() ?>"></a>
+                            <a href="<?php echo FRONT_ROOT ?>Movie/getMovie/<?php echo $movie->getId()?>"><img src="<?php echo $movie->getPosterPath()?>" width="210px" height="290px" alt="<?php echo $movie->getTitle() ?>"></a>
                         </div>
                 
                     <?php } ?>
 
                 </div>
-            
+        
             </div>
         </main>
 

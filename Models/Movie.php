@@ -47,7 +47,7 @@
             $this->vote_average = $vote_average;
             $this->overview = $overview;
             $this->release_date = $release_date;
-            $this->release_date = "";
+            $this->runtime = "";
         }
 
 

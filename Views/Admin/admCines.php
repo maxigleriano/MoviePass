@@ -6,7 +6,7 @@
         <link rel="stylesheet"  type="text/css" href="<?php echo CSS_PATH ?>estilos.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-        <title>Cartelera | MoviePass</title>
+        <title>MoviePass</title>
     </head>
     
     <body>
@@ -15,8 +15,9 @@
                 <h2 class="logotipo">MoviePass</h2>
                 <nav>
                     <a href="<?php echo FRONT_ROOT ?>Home/Index">Inicio</a>
-                    <a href="<?php echo FRONT_ROOT ?>Home/cartelera" class="activo">Cartelera</a>
+                    <a href="<?php echo FRONT_ROOT ?>Home/cartelera">Cartelera</a>
                     <a href="#">Mas Recientes</a>
+                    <a href="<?php echo FRONT_ROOT ?>Home/administrar" class="activo">Administración</a>
                     <a href="<?php echo FRONT_ROOT ?>User/logout">Salir</a>
                 </nav>
             </div>
@@ -24,19 +25,13 @@
 
         <main>
             <div class="contenedor">
-            
-                <div class="cartelera">
-                
-                    <?php foreach($movieList as $movie) { ?>
-                        
-                        <div class="movie">
-                            <a href="<?php echo FRONT_ROOT ?>Movie/getMovie/<?php echo $movie->getId()?>"><img src="<?php echo $movie->getPosterPath()?>" width="210px" height="290px" alt="<?php echo $movie->getTitle() ?>"></a>
-                        </div>
-                
-                    <?php } ?>
-
+                <div class="box">
+                    <h2>Administrar Cines</h2>
+                    <a href="<?php echo FRONT_ROOT ?>Theater/addView">Agregar</br></a>
+                    <a href="#">Editar</br></a>
+                    <a href="#">Borrar</br></a>
+                    <a href="#">Listar</br></a>
                 </div>
-            
             </div>
         </main>
 

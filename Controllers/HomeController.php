@@ -1,23 +1,98 @@
 <?php
     namespace Controllers;
 
+    use DAO\ProjectionDAO as ProjectionDAO;
+
     use API\MovieAPI as MovieAPI;
+
+    use Models\User as User;
+    use Models\Projection as Projection;
 
     class HomeController
     {
         private $movieAPI;
+        private $projectionDAO;
 
         public function __construct() 
         {
             $this->movieAPI = new MovieAPI();
+            $this->projectionDAO = new ProjectionDAO();
         }
         
         public function Index($message = "")
         {
-            $movieList = $this->listAllMovies();
+            $movieList = $this->getMovies();
 
-            require_once(VIEWS_PATH."index.php");
+            if($_SESSION["logged_user"])
+            {
+                if($_SESSION["logged_user"]->getRole() == 1)
+                {
+                    require_once(ADMIN_VIEWS . "viewAdmin.php");
+                }
+                else
+                {
+                    require_once(CLIENT_VIEWS . "viewClient.php");
+                }
+            }
+            else
+            {
+                require_once(VIEWS_PATH."index.php");
+            }  
         }  
+
+        public function cartelera() 
+        {
+            $movieList = $this->getMovies();
+
+            if($movieList)
+            {
+                if($_SESSION["logged_user"]) 
+                {
+                    if($_SESSION["logged_user"]->getRole() == 1)
+                    {
+                        require_once(ADMIN_VIEWS . "CarteleraAdmin.php");
+                    }
+                    else
+                    {
+                        require_once(CLIENT_VIEWS . "carteleraCliente.php");
+                    }
+                }
+                else
+                {
+                    require_once(VIEWS_PATH."cartelera.php");
+                }
+            }
+            else
+            {
+                echo '<script language="javascript">alert("No hay películas disponibles para mostrar");</script>'; 
+            }
+
+            
+        }
+
+        public function administrar() 
+        {
+            if($_SESSION["logged_user"]) 
+            {
+                if($_SESSION["logged_user"]->getRole() == 1)
+                {
+                    require_once(ADMIN_VIEWS . "administrar.php");
+                }
+                else
+                {
+                    $this->Index();
+                }
+            }
+            else
+            {
+                $this->Index();
+            }
+        }
+
+        public function login() 
+        {
+            require_once(VIEWS_PATH."login.php");
+        }
 
         public function listAllMovies() 
         {
@@ -26,23 +101,32 @@
             return $movies;
         }
 
-        public function cartelera() {
-            $movieList = $this->listAllMovies();
+        public function getMovies() {
+            $date = getdate();
+            $newDate = $date["year"] . "-" . $date["mon"] . "-" . $date["mday"];
+            
+            $projections = $this->projectionDAO->getFrom($newDate);
 
-            require_once(VIEWS_PATH."cartelera.php");
-        }
+            if($projections) {
 
-        public function carteleraCliente() {
-            $movieList = $this->listAllMovies();
+                $movieIds = array();
+                foreach($projections as $projection) {
+                    array_push($movieIds, $projection->getMovie());
+                }
 
-            require_once(CLIENT_VIEWS."carteleraCliente.php");
-        }
-
-        public function login() 
-        {
-            require_once(VIEWS_PATH."login.php");
+                $movieList = $this->movieAPI->getMovies(array_unique($movieIds));
+                
+                if($movieList) {
+                    return $movieList;
+                }
+                else {
+                    return null;
+                }
+            }
+            else {
+                return null;
+            }
         }
     }
-
-    
+ 
 ?>

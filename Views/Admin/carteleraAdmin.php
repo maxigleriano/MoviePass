@@ -17,6 +17,7 @@
                     <a href="<?php echo FRONT_ROOT ?>Home/Index">Inicio</a>
                     <a href="<?php echo FRONT_ROOT ?>Home/cartelera" class="activo">Cartelera</a>
                     <a href="#">Mas Recientes</a>
+                    <a href="<?php echo FRONT_ROOT ?>Home/administrar">Administración</a>
                     <a href="<?php echo FRONT_ROOT ?>User/logout">Salir</a>
                 </nav>
             </div>
@@ -26,7 +27,7 @@
             <div class="contenedor">
             
                 <div class="cartelera">
-                
+            
                     <?php foreach($movieList as $movie) { ?>
                         
                         <div class="movie">
@@ -36,7 +37,7 @@
                     <?php } ?>
 
                 </div>
-            
+        
             </div>
         </main>
 
