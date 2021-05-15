@@ -25,10 +25,44 @@
         <main>
             <div class="contenedor">
                 <div class="box">
-                    <h2><?php echo $movie->getTitle()?></h2>
-                    <img class="foto" src="<?php echo $movie->getPosterPath()?>" alt="<?php echo $movie->getTitle()?>" width="200px" height="300px">
-                    <p><?php echo $movie->getOverview()?></p>
-                    <?php echo $trailer ?>
+                    <div class="left">
+                        <h2><?php echo $movie->getTitle()?></h2>
+                        <img class="foto" src="<?php echo $movie->getPosterPath()?>" alt="<?php echo $movie->getTitle()?>" width="200px" height="300px">
+                        <p><?php echo $movie->getOverview()?></p>
+                        <?php echo $trailer ?>
+                    </div>                
+                    <div class="right">
+                        <table class=lista>
+                            <thead>
+                                <tr>
+                                    <th>Cine</th>
+                                    <th>Sala</th>
+                                    <th>Precio</th>
+                                    <th>Fecha</th>
+                                    <th>Hora</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            <?php 
+                                foreach($projectionList as $projection) 
+                                { 
+                                    $room = $this->roomDAO->getRoom($projection->getRoom());
+                            ?>
+
+                                <tr class="active-row">
+                                    <td><?php echo $this->theaterDAO->getTheater($room->getTheaterId())->getName() ?></td>
+                                    <td><?php echo $room->getName() ?></td>
+                                    <td>$<?php echo $room->getTicketValue() ?></td>
+                                    <td><?php echo $projection->getDate() ?></td>
+                                    <td><?php echo $projection->getBeginningTime() ?></td>
+                                </tr>
+
+                            <?php } ?>
+
+                            </tbody>
+                        </table>
+                    </div>                    
                 </div>
             </div>
         </main>

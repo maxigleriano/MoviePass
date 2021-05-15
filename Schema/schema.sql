@@ -56,7 +56,7 @@ create table theaters(
 create table rooms(
     room_id int not null auto_increment,
     theater_id int not null,
-    room_name varchar(30) unique,
+    room_name varchar(30),
     capacity int,
     ticket_value float,
     constraint PK_rooms primary key (room_id),

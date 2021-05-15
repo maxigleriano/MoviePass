@@ -213,6 +213,30 @@
             }
         }
 
+        public function getFromDateAndMovie($projection_date, $movie_id) {
+            try {
+                $parameters['projection_date'] = $projection_date;
+                $parameters['movie_id'] = $movie_id;
+                
+                $query = "SELECT * FROM " . $this->tableName . " WHERE (projection_date >= :projection_date && movie_id = :movie_id);";
+                
+                $this->connection = Connection::GetInstance(); 
+
+                $resultSet = $this->connection->Execute($query, $parameters);
+                
+                if($resultSet) {
+                    $newResultSet = $this->mapear($resultSet); 
+
+                    return  $newResultSet;
+                }
+                return false;
+            }
+            
+            catch(PDOException $e) {
+                    echo $e->getMessage();
+            }
+        }
+
         public function getAll() {
             try {
                 $query = "SELECT * FROM " . $this->tableName;
