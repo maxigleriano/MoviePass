@@ -28,8 +28,6 @@ create table users(
 
 insert into users (user_role, user_name,user_last_name, email, user_password, birth_date) VALUES (1, "admin", "admin", "admin@admin.com", "admin", "1999-07-19");
 
-insert into users (user_role, user_name,user_last_name, email, user_password, birth_date) VALUES (2, "client", "client", "client@client.com", "client", "1999-07-19");
-
 
 create table genres(
     genre_id int not null,
