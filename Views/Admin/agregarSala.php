@@ -51,7 +51,7 @@
 
                             <?php foreach($theaterList as $theater) { ?>
 
-                            <option value="<?php echo $theater->getName(); ?>"><?php echo $theater->getName(); ?></option>
+                            <option value="<?php echo $theater->getId(); ?>"><?php echo $theater->getName(); ?></option>
 
                             <?php } ?>
                         </select>

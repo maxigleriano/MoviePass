@@ -110,14 +110,6 @@ header nav a.activo {
     border-bottom: 1px solid #dddddd;
 }
 
-.lista tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-}
-
-.lista tbody tr:last-of-type {
-    border-bottom: 2px solid var(--rojo);
-}
-
 .lista tbody tr.active-row {
     font-weight: bold;
     color: var(--rojo);

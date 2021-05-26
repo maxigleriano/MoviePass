@@ -18,6 +18,8 @@
             require_once(ADMIN_VIEWS . "admCines.php");
         }
 
+        //ADD FUNCTIONS
+
         public function addView() {
             require_once(ADMIN_VIEWS . "agregarCine.php");
         }
@@ -34,7 +36,7 @@
                 $this->theaterDAO->add($theater);
                 echo '<script language="javascript">alert("Cine agregado correctamente");</script>'; 
 
-                $this->addView();
+                $this->administrar();
             }
             else {
                 
@@ -43,11 +45,31 @@
             } 
         }
 
-        public function modify($id, Theater $theater) {
-            $this->theaterDAO->modify($id, $theater);  
+        //MODIFY FUNCTIONS
+
+        public function selectView() 
+        {
+            $theaterList = $this->theaterDAO->getAll();
+
+            if($theaterList) 
+            {
+                require_once(ADMIN_VIEWS . "seleccionCine.php");
+            }
+            else
+            {
+                echo '<script language="javascript">alert("No hay ningún cine disponible para mostrar.");</script>'; 
+                $this->administrar();
+            }
         }
 
-        public function modifyTheater($id, $name, $address, $openingTime, $closingTime) {
+        public function modifyView($theater_id)
+        {
+            $theater = $this->theaterDAO->getTheater($theater_id);
+
+            require_once(ADMIN_VIEWS . "editarCine.php");
+        }
+
+        public function modify($id, $name, $address, $openingTime, $closingTime) {
             
             if(trim($name) && trim($address)) {
 
@@ -56,12 +78,38 @@
                 $this->theaterDAO->modify($newTheater->getId(), $newTheater);
                 echo '<script language="javascript">alert("Cine modificado correctamente");</script>'; 
                 
-                $this->listView();
+                $this->administrar();
             }
             else {
                 echo '<script language="javascript">alert("No puede haber campos en blanco");</script>'; 
-                require_once(ADMIN_VIEWS . "viewAdmin.php");
+                $this->administrar();
             }
+        }
+
+        //DELETE FUNCTIONS
+
+        public function deleteView() 
+        {
+            $theaterList = $this->theaterDAO->getAll();
+
+            if($theaterList) 
+            {
+                require_once(ADMIN_VIEWS . "borrarCine.php");
+            }
+            else
+            {
+                echo '<script language="javascript">alert("No hay ningún cine disponible para mostrar.");</script>'; 
+                $this->administrar();
+            }
+        }
+     
+        public function delete($id)
+        {
+            $this->theaterDAO->delete($id);
+
+            echo '<script language="javascript">alert("Cine borrado cor éxito");</script>'; 
+
+            $this->administrar();            
         }
     }
 ?>

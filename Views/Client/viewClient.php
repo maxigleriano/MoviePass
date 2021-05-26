@@ -33,15 +33,17 @@
                 </div>
             </div>
 
+            <?php if($movieList) { ?>
+
             <div class="peliculas-recomendadas contenedor">
                 <div class="contenedor-titulo-controles">
                     <h3>Películas en Cartelera</h3>
                     <div class="indicadores"></div>
                 </div>
-    
+
                 <div class="contenedor-principal">
                     <button role="button" id="flecha-izq" class="flecha-izq"><i class="fas fa-angle-left"></i></button>
-    
+
                     <div class="contenedor-carousel">
                         <div class="carousel">
 
@@ -55,10 +57,13 @@
 
                         </div>
                     </div>
-    
+
                     <button role="button" id="flecha-der" class="flecha-der"><i class="fas fa-angle-right"></i></button>
                 </div>
             </div>
+
+            <?php } ?>
+            
         </main>
 
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>

@@ -64,10 +64,24 @@
             }
             else
             {
-                echo '<script language="javascript">alert("No hay películas disponibles para mostrar");</script>'; 
-            }
-
-            
+                echo '<script language="javascript">alert("No hay películas disponibles para mostrar");</script>';
+                
+                if($_SESSION["logged_user"]) 
+                {
+                    if($_SESSION["logged_user"]->getRole() == 1)
+                    {
+                        require_once(ADMIN_VIEWS . "viewAdmin.php");
+                    }
+                    else
+                    {
+                        require_once(CLIENT_VIEWS . "viewClient.php");
+                    }
+                }
+                else
+                {
+                    require_once(VIEWS_PATH."index.php");
+                }   
+            }  
         }
 
         public function administrar() 
@@ -92,13 +106,6 @@
         public function login() 
         {
             require_once(VIEWS_PATH."login.php");
-        }
-
-        public function listAllMovies() 
-        {
-            $movies = $this->movieAPI->getAll();
-    
-            return $movies;
         }
 
         public function getMovies() {

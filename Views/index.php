@@ -33,6 +33,8 @@
                 </div>
             </div>
 
+            <?php if($movieList) { ?>
+
             <div class="peliculas-recomendadas contenedor">
                 <div class="contenedor-titulo-controles">
                     <h3>Películas en Cartelera</h3>
@@ -59,6 +61,9 @@
                     <button role="button" id="flecha-der" class="flecha-der"><i class="fas fa-angle-right"></i></button>
                 </div>
             </div>
+
+            <?php } ?>
+
         </main>
 
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>

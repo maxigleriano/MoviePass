@@ -28,8 +28,8 @@
                 <div class="box">
                     <h2>Administrar Cines</h2>
                     <a href="<?php echo FRONT_ROOT ?>Theater/addView">Agregar</br></a>
-                    <a href="#">Editar</br></a>
-                    <a href="#">Borrar</br></a>
+                    <a href="<?php echo FRONT_ROOT ?>Theater/selectView/">Editar</br></a>
+                    <a href="<?php echo FRONT_ROOT ?>Theater/deleteView/">Borrar</br></a>
                     <a href="#">Listar</br></a>
                 </div>
             </div>

@@ -36,7 +36,7 @@
                                  
                                 <?php foreach($roomList as $room) { ?>
                                 
-                                <option value="<?php echo $room->getName(); ?>"><?php echo $room->getName(); ?></option>
+                                <option value="<?php echo $room->getId(); ?>"><?php echo $this->theaterDAO->getTheater($room->getTheaterId())->getName() . " - " . $room->getName(); ?></option>
                                 
                                 <?php } ?>
                             </select>
@@ -49,7 +49,7 @@
                                  
                                 <?php foreach($movieList as $movie) { ?>
                                 
-                                <option value="<?php echo $movie; ?>"><?php echo $movie; ?></option>
+                                <option value="<?php echo $movie->getId(); ?>"><?php echo $movie->getTitle(); ?></option>
             
                                 <?php } ?>
                             </select>

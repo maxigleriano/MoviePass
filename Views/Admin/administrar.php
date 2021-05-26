@@ -26,6 +26,7 @@
         <main>
             <div class="contenedor">
                 <div class="box">
+                <h2>Administración</h2>
                     <a href="<?php echo FRONT_ROOT ?>Theater/administrar">Cines</br></a>
                     <a href="<?php echo FRONT_ROOT ?>Room/administrar">Salas</br></a>
                     <a href="<?php echo FRONT_ROOT ?>Projection/administrar">Funciones</br></a>

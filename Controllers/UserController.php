@@ -5,15 +5,20 @@
     use DAO\UserDAO as UserDAO;
     use Models\User as User;
 
+    use DAO\ProjectionDAO as ProjectionDAO;
+    use Models\Projection as Projection;
+
     use API\MovieAPI as MovieAPI;
 
     class UserController {
 
         private $userDAO;
+        private $projectionDAO;
         private $movieAPI;
 
         public function __construct() {
             $this->userDAO = new UserDAO();
+            $this->projectionDAO = new ProjectionDAO();
             $this->movieAPI = new MovieAPI();
         }
 
@@ -36,7 +41,7 @@
             else
             {
                 echo '<script language="javascript">alert("Email o contraseña incorrecta.");</script>';
-                require_once(VIEWS_PATH . "index.php");
+                require_once(VIEWS_PATH . "login.php");
             }
         
         }
@@ -47,17 +52,17 @@
 
         public function logout() {   
             session_destroy();
-            $movieList = $this->movieAPI->getAll();
+            $movieList = $this->getMovies();
             require_once(VIEWS_PATH . "index.php");
         }
 
         public function viewClient() {
-            $movieList = $this->movieAPI->getAll();
+            $movieList = $this->getMovies();
             require_once(CLIENT_VIEWS ."viewClient.php");
         }
 
         public function viewAdmin() {
-            $movieList = $this->movieAPI->getAll();
+            $movieList = $this->getMovies();
             require_once(ADMIN_VIEWS ."viewAdmin.php");
         }
  
@@ -80,7 +85,7 @@
                     else {
                         $this->userDAO->add($user);
                         echo '<script language="javascript">alert("Usuario registrado");</script>';  
-                        $movieList = $this->movieAPI->getAll();
+                        $movieList = $this->getMovies();
                         require_once(VIEWS_PATH . "index.php");
                     }
                 }
@@ -95,35 +100,32 @@
             }
         }
 
-        public function userSettings() {
-            require_once(CLIENT_VIEWS . "userSettings.php");
-        }
-
-        public function modifyView() {
-            $user = $_SESSION["logged_user"];
-
-            require_once(CLIENT_VIEWS . "modifyView.php");
-        }
-
-        public function modifyUser($id, $name, $lastName, $email, $password, $birthDate) {
+        public function getMovies() {
+            $date = getdate();
+            $newDate = $date["year"] . "-" . $date["mon"] . "-" . $date["mday"];
             
-            if(trim($name) && trim($lastName)) {
+            $projections = $this->projectionDAO->getFrom($newDate);
 
-                $newUser = new User($id, $name, $lastName, $email, $password, $birthDate);
+            if($projections) {
+
+                $movieIds = array();
+                foreach($projections as $projection) {
+                    array_push($movieIds, $projection->getMovie());
+                }
+
+                $movieList = $this->movieAPI->getMovies(array_unique($movieIds));
                 
-                $this->userDAO->modify($newUser->getId(), $newUser);
-
-                $_SESSION["logged_user"] = $this->userDAO->getById($id);
-
-                echo '<script language="javascript">alert("Perfil actualizado.");</script>';
-                require_once(CLIENT_VIEWS . "viewClient.php");
+                if($movieList) {
+                    return $movieList;
+                }
+                else {
+                    return null;
+                }
             }
             else {
-                echo '<script language="javascript">alert("No puede haber campos en blanco");</script>'; 
-                require_once(CLIENT_VIEWS . "userSettings.php");
+                return null;
             }
         }
-
 
     }
     

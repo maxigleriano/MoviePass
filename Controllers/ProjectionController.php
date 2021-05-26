@@ -4,7 +4,11 @@
     use Models\Projection as Projection;
     use DAO\ProjectionDAO as ProjectionDAO;
     
+    use Models\Room as Room;
     use DAO\RoomDAO as RoomDAO;
+
+    use Models\Theater as Theater;
+    use DAO\TheaterDAO as TheaterDAO;
     
     use API\MovieAPI as MovieAPI;
 
@@ -12,12 +16,14 @@
     {
         private $projectionDAO;
         private $roomDAO;
+        private $theaterDAO;
         private $movieAPI;
 
         public function __construct() 
         {
             $this->projectionDAO = new ProjectionDAO();
             $this->roomDAO = new RoomDAO();
+            $this->theaterDAO = new TheaterDAO();
             $this->movieAPI = new MovieAPI();
         }
 
@@ -28,7 +34,7 @@
 
         public function addView() {
             $roomList = $this->roomDAO->getAll();
-            $movieList = $this->movieAPI->getAllTitles();
+            $movieList = $this->movieAPI->getAll();
             require_once(ADMIN_VIEWS . "agregarFuncion.php");
         }
 
@@ -36,11 +42,12 @@
             $this->projectionDAO->add($projection);
         }
         
-        public function addNew($room_name, $movie_name, $_projection_date, $beginningTime) {
-            $room = $this->roomDAO->getByName($room_name);
-            $movie = $this->movieAPI->getByName($movie_name); 
+        public function addNew($room_id, $movie_id, $projection_date, $beginning_time) 
+        {
+            $room = $this->roomDAO->getRoom($room_id);
+            $movie = $this->movieAPI->getById($movie_id);
 
-            $projection_date = date("Y-m-d", strtotime($_projection_date));
+            date_default_timezone_set("America/Argentina/Buenos_Aires");
 
             $date = date("Y-m-d", time());
             $time = date("H:i", time());
@@ -51,18 +58,18 @@
                 Validar que el comienzo de una función sea 15 minutos después de la anterior. 
             */
 
-            if($projection_date > $date) {
-                
+            if($projection_date > $date) 
+            {
                 $projectionList1 = $this->projectionDAO->getByDate($projection_date);
-                $projectionList2 = $this->projectionDAO->getByDateAndRoom($projection_date, $room->getId());
+                $projectionList2 = $this->projectionDAO->getByDateAndRoom($projection_date, $room_id);
 
                 if($this->validateTime($projectionList2, $beginningTime) && $this->validateMovie($projectionList1, $room, $movie)) {
                     
-                    $movieRuntime = date("H:i", $movie->getRuntime()*60);
+                    $movieRuntime = $movie->getRuntime()*60;
 
-                    $endingTime = date("H:i", strtotime($beginningTime) + strtotime($movieRuntime));
+                    $endingTime = date("H:i:s", strtotime($beginning_time) + $movieRuntime);
 
-                    $projection = new Projection($room->getId(), $movie->getId(), $projection_date, $beginningTime, $endingTime, $room->getCapacity());
+                    $projection = new Projection($room_id, $movie_id, $projection_date, $beginning_time, $endingTime, $room->getCapacity());
             
                     $this->add($projection);
                     echo '<script language="javascript">alert("Función agregada correctamente");</script>'; 
@@ -73,14 +80,18 @@
                     echo '<script language="javascript">alert("Error en la creacrion de la función. Por favor, revise los datos e intente nuevamente.");</script>'; 
                     $this->addView();
                 }
-
-
             }
-            else {
-                echo '<script language="javascript">alert("La función debe ser en una fecha futura.");</script>'; 
+            else
+            {
+                echo '<script language="javascript">alert("Error. La función debe ser agregada en una fecha futura.");</script>';
                 $this->addView();
             }
         }
+
+
+
+
+        // REVISAR ESTAS FUNCIONES NO SE SI ESTAN BIEN PLANTEADAS (seguramente no)
 
 
 
@@ -103,13 +114,16 @@
 
         public function validateMovie($projectionList, $room, $movie) {
 
-            if($projectionList) {
-                foreach($projectionList as $projection) {
-
-                    if($projection->getMovie() == $movie->getId()) {
+            if($projectionList) 
+            {
+                foreach($projectionList as $projection) 
+                {
+                    if($projection->getMovie() == $movie->getId()) 
+                    {
                         $projectionRoom = $this->roomDAO->getRoom($projection->getRoom());
 
-                        if($projectionRoom->getTheaterId() == $room->getTheaterId()) {
+                        if($projectionRoom->getTheaterId() == $room->getTheaterId()) 
+                        {
                             if($projectionRoom == $room) {
                                 return true;
                             }
@@ -120,10 +134,6 @@
                         else {
                             return false;
                         }
-
-                    }
-                    else {
-                        return true;
                     }
                 }
             }

@@ -9,7 +9,7 @@
         private $movieList = array();
 
         public function getAll() {
-            $this->retrieveLimitedData();
+            $this->retrieveData();
 
             return $this->movieList;
         }

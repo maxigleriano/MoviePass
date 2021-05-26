@@ -28,8 +28,8 @@
                 <div class="box">
                     <h2>Administrar Salas</h2>
                     <a href="<?php echo FRONT_ROOT ?>Room/addView">Agregar</br></a>
-                    <a href="#">Editar</br></a>
-                    <a href="#">Borrar</br></a>
+                    <a href="<?php echo FRONT_ROOT ?>Room/selectView">Editar</br></a>
+                    <a href="<?php echo FRONT_ROOT ?>Room/deleteView">Borrar</br></a>
                     <a href="#">Listar</br></a>
                 </div>
             </div>
