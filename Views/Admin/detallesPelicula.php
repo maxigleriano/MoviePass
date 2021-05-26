@@ -41,6 +41,7 @@
                                     <th>Precio</th>
                                     <th>Fecha</th>
                                     <th>Hora</th>
+                                    <th> </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -55,8 +56,9 @@
                                     <td><?php echo $this->theaterDAO->getTheater($room->getTheaterId())->getName() ?></td>
                                     <td><?php echo $room->getName() ?></td>
                                     <td>$<?php echo $room->getTicketValue() ?></td>
-                                    <td><?php echo $projection->getDate() ?></td>
+                                    <td><?php echo date("d-m-Y", strtotime($projection->getDate())) ?></td>
                                     <td><?php echo $projection->getBeginningTime() ?></td>
+                                    <td><a href="<?php echo FRONT_ROOT ?>Purchase/buyTickets/<?php echo $projection->getId() ?>">Comprar</a></td>
                                 </tr>
 
                             <?php } ?>

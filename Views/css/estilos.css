@@ -276,6 +276,8 @@ form .option-field {
     outline: none;
 }
 
+
+
 /* ---- ---- ---- Pelicula Principal ---- ---- ---- */
 
 .pelicula-principal {
@@ -489,4 +491,10 @@ form .option-field {
     .peliculas-recomendadas .flecha-der {
         display: none;
     }
+}
+
+/* ---- ---- ---- ---- ---- ---- */
+
+form script {
+    margin-bottom: 20px;
 }

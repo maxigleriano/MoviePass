@@ -23,21 +23,21 @@
         </header>
 
         <main>
-            <div class="contenedor">
+        <div class="contenedor">
             
-                <div class="cartelera">
-                
-                    <?php foreach($movieList as $movie) { ?>
-                        
-                        <div class="movie">
-                            <a href="<?php echo FRONT_ROOT ?>Movie/getMovie/<?php echo $movie->getId()?>"><img src="<?php echo $movie->getPosterPath()?>" width="210px" height="290px" alt="<?php echo $movie->getTitle() ?>"></a>
-                        </div>
-                
-                    <?php } ?>
+            <div class="cartelera">
+            
+                <?php foreach($movieList as $movie) { ?>
+                    
+                    <div class="movie">
+                        <a href="<?php echo FRONT_ROOT ?>Movie/getMovie/<?php echo $movie->getId()?>"><img src="<?php echo $movie->getPosterPath()?>" width="210px" height="290px" alt="<?php echo $movie->getTitle() ?>"></a>
+                    </div>
+            
+                <?php } ?>
 
-                </div>
-        
             </div>
+        
+        </div>
         </main>
 
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
