@@ -1,0 +1,78 @@
+[
+    {
+      "genre_id": 28,
+      "genre_name": "Acción"
+    },
+    {
+      "genre_id": 12,
+      "genre_name": "Aventura"
+    },
+    {
+      "genre_id": 16,
+      "genre_name": "Animación"
+    },
+    {
+      "genre_id": 35,
+      "genre_name": "Comedia"
+    },
+    {
+      "genre_id": 80,
+      "genre_name": "Crimen"
+    },
+    {
+      "genre_id": 99,
+      "genre_name": "Documental"
+    },
+    {
+      "genre_id": 18,
+      "genre_name": "Drama"
+    },
+    {
+      "genre_id": 10751,
+      "genre_name": "Familia"
+    },
+    {
+      "genre_id": 14,
+      "genre_name": "Fantasía"
+    },
+    {
+      "genre_id": 36,
+      "genre_name": "Historia"
+    },
+    {
+      "genre_id": 17,
+      "genre_name": "Terror"
+    },
+    {
+      "genre_id": 10402,
+      "genre_name": "Música"
+    },
+    {
+      "genre_id": 9648,
+      "genre_name": "Misterio"
+    },
+    {
+      "genre_id": 10749,
+      "genre_name": "Romance"
+    },
+    {
+      "genre_id": 878,
+      "genre_name": "Ciencia Ficción"
+    },
+    {
+      "genre_id": 10770,
+      "genre_name": "Películas de TV"
+    },
+    {
+      "genre_id": 53,
+      "genre_name": "Suspense"
+    },
+    {
+      "genre_id": 10752,
+      "genre_name": "Bélica"
+    },
+    {
+      "genre_id": 37,
+      "genre_name": "Western"
+    }
+]

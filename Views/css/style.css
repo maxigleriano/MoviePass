@@ -1,0 +1,509 @@
+:root {
+    --rojo: #E50914;
+    --fondo: #141414;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--fondo);
+    font-family: 'Open Sans', sans-serif;
+}
+
+.contenedor {
+    width: 90%;
+    margin: auto;
+}
+
+.contenedor .box h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.contenedor .box a,
+.contenedor .box a:visited {
+    color: var(--rojo);
+}
+
+.contenedor .box a:hover {
+    color: white;
+}
+
+.mini-contenedor {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 10px;
+}
+
+header {
+    position: sticky;
+    padding: 30px 0;
+    top: 0;
+    width: 100%;
+    background-color: var(--fondo);
+}
+
+header .contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logotipo {
+    font-family: 'Bebas Neue', cursive;
+    font-weight: normal;
+    color: var(--rojo);
+    font-size: 40px;
+}
+
+header nav a {
+    color: #AAA;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+header nav a:hover,
+header nav a.activo {
+    color: #FFF;
+}
+
+.lista {
+    border-collapse: collapse;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    max-width: 100%;
+    margin: 10px auto;
+}
+
+.lista thead tr {
+    background-color: var(--rojo);
+    color: #ffffff;
+    text-align: left;
+}
+
+.lista th,
+.lista td {
+    padding: 8px 10px;
+}
+
+.lista tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.lista tbody tr.active-row {
+    font-weight: bold;
+    color: var(--rojo);
+}
+
+iframe{
+    margin: 10px auto;
+    max-width: 100%;
+}
+
+/* ---- ---- ---- Form box ---- ---- ---- */
+
+.form-box {
+    width: 320px;
+    background: #000;
+    color: #fff;
+    margin: 80px auto;
+    box-sizing: border-box;
+    padding: 50px 30px;
+    border-radius: 10px;
+  }
+  
+.form-box h2 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+  }
+  
+.form-box label {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+  }
+  
+.form-box input , .form-box p{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+.form-box select {
+    width: 100%;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+  }
+
+.form-box select option {
+    background: black;
+    color: #fff;
+  }
+  
+.form-box input[type="email"], .form-box input[type="password"], .form-box input[type="text"], .form-box input[type="date"], .form-box input[type="time"], .form-box input[type="number"], .form-box p {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+  }
+  
+.form-box input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: var(--rojo);
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+  }
+  
+.form-box input[type="submit"]:hover {
+    cursor: pointer;
+    background: #FFF;
+    color: var(--rojo);
+  }
+  
+.form-box a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+  }
+  
+.form-box a:hover {
+    color: #fff;
+  }
+  
+/* ---- ---- ---- Pelicula Principal ---- ---- ---- */
+
+.pelicula-principal {
+    font-size: 16px;
+    min-height: 40.62em;
+    color: #FFF;
+    background: linear-gradient(rgba(0, 0, 0, .50) 0%, rgba(0, 0, 0, .50) 100%), url(../img/backdrop.jpg);
+    background-position: top center;
+    background-size: cover;
+    margin-bottom: 3.12em;
+    display: flex;
+    align-items: flex-end;
+}
+
+.pelicula-principal .contenedor {
+    margin: 0 auto;
+    margin-bottom: 6.25em;
+}
+
+.pelicula-principal .titulo {
+    font-weight: 600;
+    font-size: 3.12em;
+    margin-bottom: 0.4em;
+}
+
+.pelicula-principal .descripcion {
+    font-weight: normal;
+    font-size: 1em;
+    line-height: 1.75em;
+    max-width: 50%;
+    margin-bottom: 1.25em;
+}
+
+.pelicula-principal .boton {
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 0.31em;
+    padding: 0.93em 1.87em;
+    color: #fff;
+    margin-right: 1.25em;
+    cursor: pointer;
+    transition: .3s ease all;
+    font-size: 1.12em;
+} 
+
+.pelicula-principal .boton:hover {
+    background: #FFF;
+    color: #000;
+}
+
+.pelicula-principal .boton i {
+    margin-right: 1.25em;
+}
+
+/* ---- ---- ---- Contenedor Titulo y Controles ---- ---- ---- */
+
+.contenedor-titulo-controles {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.contenedor-titulo-controles h3 {
+    color: #FFF;
+    font-size: 30px;
+}
+
+.contenedor-titulo-controles .indicadores button {
+    background: #FFF;
+    height: 3px;
+    width: 10px;
+    cursor: pointer;
+    border: none;
+    margin-right: 2px;
+}
+
+.contenedor-titulo-controles .indicadores button:hover,
+.contenedor-titulo-controles .indicadores button.activo {
+    background: red;
+}
+
+/* ---- ---- ---- Contenedor Principal y Flechas ---- ---- ---- */
+
+.peliculas-recomendadas {
+	margin-bottom: 70px;
+}
+
+.peliculas-recomendadas .contenedor-principal {
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+
+.peliculas-recomendadas .contenedor-principal .flecha-izq,
+.peliculas-recomendadas .contenedor-principal .flecha-der {
+	position: absolute;
+	border: none;
+	background: rgba(0,0,0,0.3);
+	font-size: 40px;
+	height: 50%;
+	top: calc(50% - 25%);
+	line-height: 40px;
+	width: 50px;
+	color: #fff;
+	cursor: pointer;
+	z-index: 500;
+	transition: .2s ease all;
+}
+
+.peliculas-recomendadas .contenedor-principal .flecha-izq:hover,
+.peliculas-recomendadas .contenedor-principal .flecha-der:hover {
+	background: rgba(0,0,0, .9);
+}
+
+.peliculas-recomendadas .contenedor-principal .flecha-izq {
+	left: 0;
+}
+
+.peliculas-recomendadas .contenedor-principal .flecha-der {
+	right: 0;
+}
+
+/* ---- ---- ---- Carousel ---- ---- ---- */
+
+.peliculas-recomendadas .contenedor-carousel {
+    width: 100%;
+    padding: 20px 0;
+    overflow: hidden;
+    scroll-behavior: smooth;
+}
+
+.peliculas-recomendadas .contenedor-carousel .carousel {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.peliculas-recomendadas .contenedor-carousel .carousel .pelicula {
+    min-width: 20%;
+    transition: .3s ease all;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .3);
+}
+
+.peliculas-recomendadas .contenedor-carousel .carousel .pelicula.hover {
+    transform: scale(1.2);
+    transform-origin: center;
+}
+
+.peliculas-recomendadas .contenedor-carousel .carousel .pelicula img {
+    width: 100%;
+    vertical-align: top;
+}
+
+/* ---- ---- ---- Cartelera ---- ---- ---- */
+
+.movie-container{
+    background-color: var(--fondo);
+    margin: 20px auto;
+    padding: 10px;
+    width: 60%;
+    display: flex;
+}
+
+.movie-container .movie-img{
+    margin-right: 30px;
+}
+
+.movie-container .movie-img img{
+    border-radius: 5px;
+    width: 210px;
+    height: 290px;
+}
+
+.movie-container .movie-details{
+    
+}
+
+.movie-details h3{
+    margin: 20px 0;
+}
+
+.movie-details h3 a{
+    color: #ddd;
+}
+
+.movie-details p{
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+/* ---- ---- ---- Buttons ---- ---- ---- */
+
+.btn {
+    font-size: 14px;
+    padding: 6px 12px;
+    margin-bottom: 0;
+
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+}
+.btn:focus,
+.btn:active:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+.btn:hover,
+.btn:focus {
+    text-decoration: none;
+}
+.btn:active {
+    background-image: none;
+    outline: 0;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+
+.remove {
+    background-color: #DC3545;
+    color: #FFF;
+}
+
+.modify {
+    background-color: #007BFF;
+    color: #FFF;
+}
+
+/* ---- ---- ---- Media Querys ---- ---- ---- */
+
+@media screen and (max-width: 800px) {
+    header .logotipo {
+        margin-bottom: 10px;
+        font-size: 30px;
+    }
+
+    header .contenedor {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .pelicula-principal {
+        font-size: 14px;
+    }
+
+    .pelicula-principal .descripcion {
+        display:  none;
+    }
+
+    .peliculas-recomendadas .contenedor-carousel {
+        overflow: visible;
+    }
+
+    .peliculas-recomendadas .contenedor-carousel .carousel {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .peliculas-recomendadas .indicadores,
+    .peliculas-recomendadas .flecha-izq,
+    .peliculas-recomendadas .flecha-der {
+        display: none;
+    }
+
+    .movie-container{
+        padding: 0;
+        width: 100%;
+        display: grid;
+    }
+    .movie-details h3{
+        margin: 10px auto;
+    }
+
+    .movie-container .movie-img{
+        margin: 0 auto;
+    }
+
+    .movie-container .movie-img img{
+        width: 168px;
+        height: 232px;
+    }
+
+    .movie-container .movie-details .descripcion{
+        display: none;
+    }
+
+    .lista{
+        font-size: 12px;
+    }
+
+    .form-box {
+        margin: 0 auto;
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+}
+
+/* ---- ---- ---- ---- ---- ---- */
+
+.mini-contenedor form script {
+    margin-bottom: 50px;
+}
